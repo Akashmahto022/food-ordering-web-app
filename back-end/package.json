@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "server": "nodemon server.js"
+    "server": "nodemon -r dotenv/config --experimental-json-modules src/server.js"
   },
   "keywords": [
     "MERN",
