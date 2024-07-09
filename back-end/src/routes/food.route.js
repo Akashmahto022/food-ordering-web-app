@@ -20,7 +20,5 @@ const upload = multer({
 foodRouter.post("/add", upload.single('image'),addFood)
 
 
-
-
 export default foodRouter
 

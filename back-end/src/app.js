@@ -1,11 +1,15 @@
 import express from 'express'
 import cors from 'cors'
+import foodRouter from './routes/food.route.js'
 
 const app = express()
 
 // middlerware
 app.use(express.json())
 app.use(cors())
+
+//api endpoints
+app.use('/api/food', foodRouter)
 
 app.get('/', (req,res)=>{
     res.send('Hello Akash Mahto')
