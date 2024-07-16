@@ -22,7 +22,7 @@ app.get('/name', (req,res)=>{
     res.send('Rahul')
 })
 app.get('/api', (req,res)=>{
-    res.send('Hello Akash Mahto')
+    res.send('Hello Akash Mahto /api worked')
 })
 
 export {app}

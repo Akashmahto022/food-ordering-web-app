@@ -1,4 +1,4 @@
-import { UserModel } from "../modals/user.modals.js";
+import { UserSchema } from "../modals/user.modals.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import validator from "validator";
@@ -7,14 +7,14 @@ import validator from "validator";
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const user = await UserModel.findOne({ email });
+    const user = await UserSchema.findOne({ email });
     if (!user) {
       return res.json({ success: false, message: "User does not exists" });
     }
 
     const isMatchPassword = await bcrypt.compare(password, user.password);
     if (!isMatchPassword) {
-      return res.json({ success: false, message: "Wrong Password" });
+      return res.json({ success: false, message: "Wrong Password please enter valid password" });
     }
 
     const token = createToken(user._id);
@@ -40,17 +40,17 @@ const createToken = (id) => {
 const registerUser = async (req, res) => {
   const { userName, password, email } = req.body;
   try {
-    const exists = await UserModel.findOne({ email });
+    const exists = await UserSchema.findOne({ email });
+
     // checking is user already exists
     if (exists) {
       return res.json({
         success: false,
-        message: "User all ready exists",
+        message: "User already exists",
       });
     }
 
     // validating email format and strong password
-
     if (!validator.isEmail(email)) {
       return res.json({
         success: false,
@@ -61,7 +61,7 @@ const registerUser = async (req, res) => {
     if (password.length < 8) {
       return res.json({
         success: false,
-        message: "please enter a strong password",
+        message: "please enter a strong password and use something like @#*& symbol",
       });
     }
 
@@ -69,7 +69,7 @@ const registerUser = async (req, res) => {
     const hashPassword = await bcrypt.hash(password, 10);
 
     // creating new user
-    const newUser = new UserModel({
+    const newUser = new UserSchema({
       userName: userName,
       email: email,
       password: hashPassword,
