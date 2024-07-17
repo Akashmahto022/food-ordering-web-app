@@ -1,8 +1,4 @@
 import mongoose from "mongoose";
-import { DB_NAME } from "../constant.js";
-
-const uri =
-  "mongodb+srv://akashmahto2272003:food-app-5060@cluster0.inxmnso.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 const connectDB = async () => {
   try {

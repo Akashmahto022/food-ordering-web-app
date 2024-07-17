@@ -92,7 +92,7 @@ export const menu_list = [
         menu_image: menu_2
     },
     {
-        menu_name: "Deserts",
+        menu_name: "Desert",
         menu_image: menu_3
     },
     {
@@ -137,7 +137,7 @@ export const food_list = [
         name: "Clover Salad",
         image: food_3,
         price: 16,
-        description: "Food provides essential nutrients for overall health and well-being",
+        description: "  ",
         category: "Salad"
     }, {
         _id: "4",
@@ -262,7 +262,7 @@ export const food_list = [
         category: "Cake"
     }, {
         _id: "21",
-        name: "Garlic Mushroom ",
+        name: "Garlic Mushroom",
         image: food_21,
         price: 14,
         description: "Food provides essential nutrients for overall health and well-being",

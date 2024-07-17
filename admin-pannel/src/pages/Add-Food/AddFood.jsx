@@ -37,7 +37,7 @@ const AddFood = () => {
         name: "",
         description:"",
         price:"",
-        category: "",
+        category: "Select",
       })
       setImage(false)
       toast.success(response.data.message)
