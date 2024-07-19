@@ -20,5 +20,8 @@ app.use("/api/cart", cartRouter)
 app.get('/', (req,res)=>{
     res.send('Hello Akash Mahto')
 })
+app.get('/name', (req,res)=>{
+    res.send('I am Akash Mahto')
+})
 
 export {app}
