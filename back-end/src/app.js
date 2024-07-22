@@ -3,6 +3,7 @@ import cors from 'cors'
 import foodRouter from './routes/food.route.js'
 import userRouter from './routes/user.Route.js'
 import cartRouter from './routes/cart.Route.js'
+import orderRouter from './routes/order.Route.js'
 
 const app = express()
 
@@ -15,6 +16,7 @@ app.use('/api/food', foodRouter)
 app.use('/images',express.static('uploads'))
 app.use('/api/user',userRouter)
 app.use("/api/cart", cartRouter)
+app.use("/api/order", orderRouter)
 
 
 app.get('/', (req,res)=>{
