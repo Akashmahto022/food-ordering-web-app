@@ -12,7 +12,7 @@ const placeOrder = async(req, res)=>{
     try {
         const newOrder = new OrderSchema({
             userId: req.body.userId,
-            itmes: req.body.itmes,
+            items: req.body.items,
             amount: req.body.amount,
             address: req.body.address,
 
@@ -57,5 +57,35 @@ const placeOrder = async(req, res)=>{
     }
 }
 
+const verifyOrder = async(req, res)=>{
+    const {orderId, success} = req.body
+    try {
+        if (success=='true') {
+            await OrderSchema.findByIdAndUpdate(orderId, {payment:true});
+            res.json({success:true, message:"Paid"})
+        }
+        else{
+            await OrderSchema.findByIdAndDelete(orderId);
+            res.json({success:false, message: "not paid"})
+        }
+    } catch (error) {
+        console.log(error)
+        res.josn({success:false, message:"Error in paid"})
+    }
+}
 
-export {placeOrder}
+
+const userOrders = async(req, res)=>{
+    try {
+        const orders = await OrderSchema.find({userId:req.body.userId})
+        if (!orders) {
+            res.json({success:false, message: "error in order"})
+        }
+        res.json({success:true, data:orders})
+    } catch (error) {
+        console.log(error);
+        res.json({success:false, message: "error in order"})
+    }
+}
+
+export {placeOrder, verifyOrder, userOrders}
