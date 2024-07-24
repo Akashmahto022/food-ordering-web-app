@@ -6,6 +6,7 @@ import { assets } from "../../assets/assets";
 
 const Orders = () => {
   const [data, setData] = useState([]);
+  const [status, setStatus] = useState("");
   const url = "http://localhost:3000";
   const fetchAllOrders = async () => {
     const response = await axios.get(url + "/api/order/listorders");
@@ -14,6 +15,16 @@ const Orders = () => {
       console.log(response.data.data);
     } else {
       toast.error("Error in getting orders");
+    }
+  };
+
+  const statusHandler = async (e, orderId) => {
+    const response = await axios.post(url + "/api/order/status", {
+      orderId,
+      status: e.target.value,
+    });
+    if (response.data.success) {
+      await fetchAllOrders();
     }
   };
 
@@ -57,7 +68,10 @@ const Orders = () => {
             </div>
             <p>Items: {order.items.length}</p>
             <p>${order.amount}</p>
-            <select>
+            <select
+              onChange={(e) => statusHandler(e, order._id)}
+              value={order.status}
+            >
               <option value="Food Processing">Food Processing</option>
               <option value="Out For Delivery">Out For Delivery</option>
               <option value="Food Delivered">Food Delivered</option>
@@ -70,4 +84,3 @@ const Orders = () => {
 };
 
 export default Orders;
-
