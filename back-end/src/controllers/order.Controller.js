@@ -88,4 +88,16 @@ const userOrders = async(req, res)=>{
     }
 }
 
-export {placeOrder, verifyOrder, userOrders}
+// list all the orders from the user
+const listOrders = async(req, res)=>{
+    try {
+        const orders = await OrderSchema.find({});
+        res.json({success:true, data:orders})
+    } catch (error) {
+        console.log(error)
+        res.json({success:false, message: "error in geting orders"})
+    }
+}
+
+
+export {placeOrder, verifyOrder, userOrders, listOrders}
