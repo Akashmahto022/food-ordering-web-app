@@ -33,7 +33,7 @@ const Footer = () => {
             </div>
         </div>
         <hr />
-        <p className='footer-copyright'>Copyright 2024 All Right Reserved by the <a href="https://akash-mahto-portfolio.netlify.app/">Click</a></p>
+        <p className='footer-copyright'>Copyright 2024 All Right Reserved by the Akash Mahto, get to know about me <a href="https://akash-mahto-portfolio.netlify.app/" target='_blank'>Click Here</a></p>
     </div>
   )
 }
