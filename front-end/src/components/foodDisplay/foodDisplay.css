@@ -16,3 +16,33 @@
     gap: 30px;
     row-gap: 50px;
 }
+
+ /* spinner for get all food */
+
+ .verify{
+    min-height: 60vh;
+    display: grid;
+
+}
+
+.verify h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.verify .spinner{
+    width: 100px;
+    height: 100px;
+    place-self: center;
+    border: 5px solid #dbdbdb;
+    border-top-color: tomato;
+    border-radius: 50%;
+    animation: rotate 1s infinite;
+}
+
+@keyframes rotate{
+    100%{
+        transform: rotate(360deg);
+    }
+}
